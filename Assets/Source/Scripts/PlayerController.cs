@@ -1,22 +1,40 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float sensitivity = 2f;
+    [SerializeField] private float sensitivity = 3000f;
+    private float rotationX = 0f;
+    private float rotationY = 0f;
 
-    Vector2 rotation = Vector2.zero;
-    const string xAxis = "Mouse X";
-    const string yAxis = "Mouse Y";
-
-    void Update()
+    private void Start()
     {
-        rotation.x += Input.GetAxis(xAxis) * sensitivity;
-        rotation.y += Input.GetAxis(yAxis) * sensitivity;
-        var xQuat = Quaternion.AngleAxis(rotation.x, Vector3.up);
-        var yQuat = Quaternion.AngleAxis(rotation.y, Vector3.left);
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        transform.localRotation = Quaternion.Euler(rotationY, rotationX, 0f);
 
-        transform.localRotation = xQuat * yQuat;
+    }
+
+    private void Update()
+    {
+        Rotation();
+    }
+
+    private void Rotation()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * sensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * sensitivity * Time.deltaTime;
+
+        rotationX += mouseX;
+        rotationY -= mouseY;
+        
+        rotationX = Mathf.Clamp(rotationX, -180f, 180f);
+        rotationY = Math.Clamp(rotationY, -90f , 90f);
+
+
+        transform.localRotation = Quaternion.Euler(rotationY, rotationX, 0f);
+        //transform.localRotation = Quaternion.Euler(rotationY, 0f, 0f);
     }
 }
