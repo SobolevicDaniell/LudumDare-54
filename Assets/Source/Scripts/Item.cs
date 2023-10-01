@@ -5,7 +5,8 @@ using UnityEngine;
 public enum ItemType
 {
     StvorkaL,
-    StvorkaR
+    StvorkaR,
+    Button
 }
 
 
@@ -30,6 +31,11 @@ public class Item : MonoBehaviour
             GetComponentInParent<Animator>().SetBool("IsOpen", i2);
             i2 = !i2;
             //GetComponentInParent<Animator>().SetBool("IsClose", i2);
+        }
+
+        if (type == ItemType.Button)
+        {
+            GetComponentInParent<Animator>().SetBool("IsPushed", true);
         }
     }
 }
