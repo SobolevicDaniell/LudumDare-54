@@ -15,6 +15,7 @@ public class Item : MonoBehaviour
     public ItemType type;
     private bool i1 = true;
     private bool i2 = true;
+    private bool i3 = true;
 
     public void Interaction()
     {
@@ -23,19 +24,22 @@ public class Item : MonoBehaviour
            
             GetComponentInParent<Animator>().SetBool("IsOpen", i1);
             i1 = !i1;
-            //GetComponentInParent<Animator>().SetBool("IsClose", i1);
         }
         if (type == ItemType.StvorkaR)
         {
            
             GetComponentInParent<Animator>().SetBool("IsOpen", i2);
             i2 = !i2;
-            //GetComponentInParent<Animator>().SetBool("IsClose", i2);
         }
 
         if (type == ItemType.Button)
-        {
-            GetComponentInParent<Animator>().SetBool("IsPushed", true);
+        {   
+            i3 = !i3;
+            GetComponentInParent<Animator>().SetBool("IsPushed", i3);
+            i3 = !i3;
+            GetComponentInParent<Animator>().SetBool("IsPushed", i3);
         }
+        
+        
     }
 }
