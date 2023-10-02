@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.004331252, g: 0.0038101496, b: 0.0046157804, a: 1}
+  m_IndirectSpecularColor: {r: 0.0041354075, g: 0.0036585154, b: 0.0043853577, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -902,7 +902,7 @@ MonoBehaviour:
   point2: {fileID: 0}
   asteroid: {fileID: 1610152537694500624, guid: 23387d91cbe6a6e44becf25383fbb8ea, type: 3}
   alarm: {fileID: 2127525217}
-  timer: 3
+  timer: 10
   asteroidsCount: 0
 --- !u!65 &687903455
 BoxCollider:

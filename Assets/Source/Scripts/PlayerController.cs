@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private float sensitivity = 3000f;
+    [SerializeField] private float sensitivity = 1f;
     private float rotationX = 0f;
     private float rotationY = 0f;
 
