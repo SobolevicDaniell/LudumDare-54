@@ -901,7 +901,7 @@ MonoBehaviour:
   point1: {fileID: 1205775161}
   point2: {fileID: 0}
   asteroid: {fileID: 1610152537694500624, guid: 23387d91cbe6a6e44becf25383fbb8ea, type: 3}
-  timer: 1
+  timer: 3
   asteroidsCount: 0
 --- !u!65 &687903455
 BoxCollider:

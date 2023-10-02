@@ -35,6 +35,5 @@ public class PlayerController : MonoBehaviour
 
 
         transform.localRotation = Quaternion.Euler(rotationY, rotationX, 0f);
-        //transform.localRotation = Quaternion.Euler(rotationY, 0f, 0f);
     }
 }

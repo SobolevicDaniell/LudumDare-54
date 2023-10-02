@@ -49,7 +49,6 @@ public class Mechanic : MonoBehaviour
 
     
 
-    //private float spendIce;
 
 
     public static bool IsRegenOxigen = false;
@@ -103,6 +102,8 @@ public class Mechanic : MonoBehaviour
         }
     }
     
+    
+    
 
     void Timer()
     {
@@ -150,57 +151,74 @@ public class Mechanic : MonoBehaviour
         }
     }
 
-    
-    
-    
-    void OnSheld()
-    {
-        if (energy >= costShild && IsCollision && IsShildOn)
+    void IsDie()
         {
-            asteroidsCount++;
-            energy -= costShild;
-        }
-        else if (energy <= costShild && IsCollision)
-        {
-            Debug.Log("Игра закрылась");
-            //Конец
-            
-        }
-        IsCollision = false;
-    }
-
-    void Shot()
-    {
-        if (IsFire && IsCollision && energy >= costShot)
-        {
-            Debug.Log("Выстрел");
-            shut = true;
-            ice += iseByAsteroid;
-            asteroidsCount++;
-            energy -= costShot;
-        }
-        else if (energy <= costShot && IsCollision)
-        {
-            Debug.Log("Конец игры");
-        }
-    }
-
-    void SpawnAsteroids()
-    {
-        if (timer <= 0)
-        {
-            GameObject newAsteroid = Instantiate(asteroid, point1.transform.position, Quaternion.identity);
-            
-            if (shut)
+            if (oxigen <= 0 || energy <= 0)
             {
-                Destroy(newAsteroid);
-                shut = false;
+                GameOver();
             }
-            timer += Random.Range(5, 15);
         }
+
+
+
+
+        void OnSheld()
+        {
+            if (energy >= costShild && IsCollision && IsShildOn)
+            {
+                asteroidsCount++;
+                energy -= costShild;
+                IsCollision = false;
+            }
+            else if (energy <= costShild && IsCollision)
+            {
+                Debug.Log("Игра закрылась");
+                IsCollision = false;
+                GameOver();
+            }
+
+        }
+
+        void Shot()
+        {
+            if (IsFire && IsCollision && energy >= costShot)
+            {
+                Debug.Log("Выстрел");
+                shut = true;
+                ice += iseByAsteroid;
+                asteroidsCount++;
+                energy -= costShot;
+            }
+            else if (energy <= costShot && IsCollision)
+            {
+                Debug.Log("Конец игры");
+                GameOver();
+            }
+        }
+
+        void SpawnAsteroids()
+        {
+            if (timer <= 0)
+            {
+                GameObject newAsteroid = Instantiate(asteroid, point1.transform.position, Quaternion.identity);
+
+                if (shut)
+                {
+                    Destroy(newAsteroid);
+                    shut = false;
+                }
+
+                timer += Random.Range(5, 15);
+            }
+        }
+
         
-        
-    }
-    
+        void GameOver()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            SceneManager.LoadScene("Menu");
+        }
+
     
 }

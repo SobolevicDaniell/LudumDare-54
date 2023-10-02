@@ -14,6 +14,8 @@ public class AsteroidMuvment : MonoBehaviour
         transform.Translate(asterodSpeed * dir,Space.World);
     }
 
+
+
+
     
-  
 }
