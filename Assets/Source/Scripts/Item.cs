@@ -40,9 +40,10 @@ public class Item : MonoBehaviour
         }
         if (type == ItemType.Button)
         {
-            i3 = true;
-            GetComponentInParent<Animator>().SetTrigger("IsPushed");
             
+            GetComponentInParent<Animator>().SetTrigger("IsPushed");
+            Mechanic.IsFire = true;
+
         }
         
         
