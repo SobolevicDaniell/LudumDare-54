@@ -62,6 +62,7 @@ public class Mechanic : MonoBehaviour
 
     public static bool IsShildOn = false;
     public static bool IsFire = false;
+    public static bool IsAlarm = false;
 
         
     
@@ -143,10 +144,9 @@ public class Mechanic : MonoBehaviour
         {
             energy += speedEnergyRegen * timeCoefficient;
         }
-        else if (IsRegenEnergy)
+        else if (IsRegenEnergy && IsRegenOxigen)
         {
-            alarm.GetComponent<Animator>().SetBool("IsAlarm", true);
-            
+            Alarm();
         }
     }
 
@@ -160,7 +160,14 @@ public class Mechanic : MonoBehaviour
 
     void Alarm()
     {
-        
+        if (IsAlarm)
+        {
+            alarm.GetComponent<Animator>().SetBool("IsAlarm", true);
+        }
+        else
+        {
+            alarm.GetComponent<Animator>().SetBool("IsAlarm", false);
+        }
     }
 
 
