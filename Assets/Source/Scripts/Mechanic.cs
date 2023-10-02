@@ -38,6 +38,7 @@ public class Mechanic : MonoBehaviour
     [SerializeField] private GameObject point1;
     [SerializeField] private GameObject point2;
     [SerializeField] private GameObject asteroid;
+    [SerializeField] private GameObject alarm;
 
     private float energy;
     private float oxigen;
@@ -144,7 +145,8 @@ public class Mechanic : MonoBehaviour
         }
         else if (IsRegenEnergy)
         {
-            //Error
+            alarm.GetComponent<Animator>().SetBool("IsAlarm", true);
+            
         }
     }
 
@@ -156,6 +158,10 @@ public class Mechanic : MonoBehaviour
             }
         }
 
+    void Alarm()
+    {
+        
+    }
 
 
 

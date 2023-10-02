@@ -69,6 +69,8 @@ public class Item : MonoBehaviour
             i6 = !i6;
             
         }
+
+        
         
     }
 }
