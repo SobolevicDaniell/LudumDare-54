@@ -56,6 +56,7 @@ public class Mechanic : MonoBehaviour
     public static bool IsRegenEnergy = false;
 
     private bool IsCollision = false;
+    private bool shut = false;
     [SerializeField] private int asteroidsCount;
 
 
@@ -173,8 +174,10 @@ public class Mechanic : MonoBehaviour
         if (IsFire && IsCollision && energy >= costShot)
         {
             Debug.Log("Выстрел");
+            shut = true;
             ice += iseByAsteroid;
             asteroidsCount++;
+            energy -= costShot;
         }
         else if (energy <= costShot && IsCollision)
         {
@@ -187,7 +190,13 @@ public class Mechanic : MonoBehaviour
         if (timer <= 0)
         {
             GameObject newAsteroid = Instantiate(asteroid, point1.transform.position, Quaternion.identity);
-            timer += Random.Range(15, 30);
+            
+            if (shut)
+            {
+                Destroy(newAsteroid);
+                shut = false;
+            }
+            timer += Random.Range(5, 15);
         }
         
         
