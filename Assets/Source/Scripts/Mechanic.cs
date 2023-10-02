@@ -76,11 +76,7 @@ public class Mechanic : MonoBehaviour
         
     }
 
-    void Update()
-    {
-        
-    }
-
+   
     private void FixedUpdate()
     {
         TextUpadate();
@@ -91,6 +87,7 @@ public class Mechanic : MonoBehaviour
         SpawnAsteroids();
         OnSheld();
         Shot();
+        IsDie();
     }
 
     private void OnTriggerEnter(Collider other)
