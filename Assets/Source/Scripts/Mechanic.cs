@@ -93,8 +93,9 @@ public class Mechanic : MonoBehaviour
         Timer();
         SpawnAsteroids();
         OnSheld();
-        Shot();
+        //Shot();
         IsDie();
+        Alarm();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -141,10 +142,7 @@ public class Mechanic : MonoBehaviour
             ice    -= spendIceInTime * timeCoefficient;
             energy -= speedEnergyToOxigen * timeCoefficient;
         }
-        else if (IsRegenOxigen || IsRegenEnergy)
-        {
-            //Error
-        }
+        
     }
 
     void RegenEnergy()
@@ -152,10 +150,22 @@ public class Mechanic : MonoBehaviour
         if (IsRegenEnergy && energy < maxEnergy && !IsRegenOxigen)
         {
             energy += speedEnergyRegen * timeCoefficient;
+            alarm.GetComponent<Animator>().SetBool("IsAlarm", false);
         }
-        else if (IsRegenEnergy && IsRegenOxigen)
+        
+        
+    }
+
+    void Alarm()
+    {
+        if (IsRegenEnergy && IsRegenOxigen)
         {
-            Alarm();
+            
+            alarm.GetComponent<Animator>().SetBool("IsAlarm", true);
+        }
+        else
+        {
+            alarm.GetComponent<Animator>().SetBool("IsAlarm", false);
         }
     }
 
@@ -167,18 +177,7 @@ public class Mechanic : MonoBehaviour
             }
         }
 
-    void Alarm()
-    {
-        if (IsAlarm)
-        {
-            alarm.GetComponent<Animator>().SetBool("IsAlarm", true);
-        }
-        else
-        {
-            alarm.GetComponent<Animator>().SetBool("IsAlarm", false);
-        }
-    }
-
+    
 
 
         void OnSheld()
@@ -198,23 +197,39 @@ public class Mechanic : MonoBehaviour
 
         }
 
+        // void Shot()
+        // {
+        //     if (IsFire && IsCollision && energy >= costShot)
+        //     {
+        //         Debug.Log("Выстрел");
+        //         shut = true;
+        //         ice += iseByAsteroid;
+        //         asteroidsCount++;
+        //         energy -= costShot;
+        //     }
+        //     else if (energy <= costShot && IsCollision)
+        //     {
+        //         Debug.Log("Конец игры");
+        //         GameOver();
+        //     }
+        // }
+
+
         void Shot()
         {
-            if (IsFire && IsCollision && energy >= costShot)
+            if (energy >= costShot && !IsShildOn)
             {
-                Debug.Log("Выстрел");
-                shut = true;
-                ice += iseByAsteroid;
-                asteroidsCount++;
-                energy -= costShot;
+                
             }
-            else if (energy <= costShot && IsCollision)
+            else
             {
-                Debug.Log("Конец игры");
-                GameOver();
+                //alarm.GetComponent<Animator>().SetBool("IsAlarm", true);
             }
         }
-
+        
+        
+        
+        
         void SpawnAsteroids()
         {
             if (timer <= 0)

@@ -42,7 +42,7 @@ public class Item : MonoBehaviour
         {
             
             GetComponentInParent<Animator>().SetTrigger("IsPushed");
-            Mechanic.IsFire = true;
+            
 
         }
         
