@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using Random = UnityEngine.Random;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Mechanic : MonoBehaviour
 {
@@ -39,6 +40,10 @@ public class Mechanic : MonoBehaviour
     [SerializeField] private GameObject point2;
     [SerializeField] private GameObject asteroid;
     [SerializeField] private GameObject alarm;
+
+    [SerializeField] private Slider sliderElectricity;
+    [SerializeField] private Slider sliderOxigen;
+    [SerializeField] private Slider sliderIce;
 
     private float energy;
     private float oxigen;
@@ -81,7 +86,7 @@ public class Mechanic : MonoBehaviour
    
     private void FixedUpdate()
     {
-        TextUpadate();
+        //TextUpadate();
         SpendByTime();
         RegenOxigen();
         RegenEnergy();
@@ -121,7 +126,11 @@ public class Mechanic : MonoBehaviour
     {
         energy -= spendEnergyInTime * timeCoefficient;
         oxigen -= spendOxigenInTime * timeCoefficient;
-        
+
+        sliderElectricity.value = energy;
+        sliderOxigen.value = oxigen;
+        sliderIce.value = ice;
+
     }
 
     void RegenOxigen()
