@@ -274,7 +274,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &299909623
 Transform:
   m_ObjectHideFlags: 0
@@ -881,28 +881,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxEnergy: 100
-  startEnergy: 70
-  spendEnergyInTime: 5
+  startEnergy: 100
+  spendEnergyInTime: 4
   speedEnergyRegen: 20
   speedEnergyToOxigen: 20
   maxOxigen: 100
-  startOxigen: 30
-  spendOxigenInTime: 2
+  startOxigen: 100
+  spendOxigenInTime: 1
   speedOxigenRegen: 20
   maxIce: 100
   startIce: 50
-  spendIceInTime: 1
+  spendIceInTime: 3
   iseByAsteroid: 10
   _energyText: {fileID: 1290159364}
   _oxigenText: {fileID: 514088780}
   _iceText: {fileID: 1594058794}
-  costShild: 10
+  costShild: 30
   costShot: 50
   point1: {fileID: 1205775161}
   point2: {fileID: 0}
   asteroid: {fileID: 1610152537694500624, guid: 23387d91cbe6a6e44becf25383fbb8ea, type: 3}
   alarm: {fileID: 2127525217}
-  timer: 10
+  timer: 30
   asteroidsCount: 0
 --- !u!65 &687903455
 BoxCollider:

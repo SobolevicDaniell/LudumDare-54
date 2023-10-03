@@ -218,7 +218,7 @@ public class Mechanic : MonoBehaviour
                     shut = false;
                 }
 
-                timer += Random.Range(5, 15);
+                timer += Random.Range(15, 25);
             }
         }
 
