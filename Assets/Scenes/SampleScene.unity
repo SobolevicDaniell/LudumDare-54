@@ -1408,7 +1408,7 @@ MonoBehaviour:
   speedEnergyToOxigen: 20
   maxOxigen: 100
   startOxigen: 100
-  spendOxigenInTime: 1
+  spendOxigenInTime: 3
   speedOxigenRegen: 20
   maxIce: 100
   startIce: 50

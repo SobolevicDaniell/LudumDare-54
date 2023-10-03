@@ -124,8 +124,8 @@ public class Mechanic : MonoBehaviour
 
     void SpendByTime()
     {
-        energy -= spendEnergyInTime * timeCoefficient;
-        oxigen -= spendOxigenInTime * timeCoefficient;
+        energy -= spendEnergyInTime * timeCoefficient + asteroidsCount;
+        oxigen -= spendOxigenInTime * timeCoefficient + asteroidsCount;
 
         sliderElectricity.value = energy;
         sliderOxigen.value = oxigen;
