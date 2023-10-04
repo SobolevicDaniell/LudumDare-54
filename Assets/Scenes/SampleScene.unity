@@ -3505,6 +3505,10 @@ PrefabInstance:
       value: Button
       objectReference: {fileID: 0}
     - target: {fileID: 753934378961500742, guid: 9acc7a7d6d6d65f4da3a460a76489576, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 753934378961500742, guid: 9acc7a7d6d6d65f4da3a460a76489576, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
